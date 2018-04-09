@@ -1,0 +1,63 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    font-size: 1rem;
+}
+
+@media only screen and (max-width: 500px) {
+    .btn {
+        font-size: 0.8rem!important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .btn {
+        font-size: 0.6rem!important;
+    }
+}
+
+body {
+    padding: 80px 40px 40px 40px;
+}
+
+.input-group-addon {
+    min-width: 90px;
+    text-align: left;
+}
+
+.help-block {
+    text-align: left !important;
+    display: inline-block !important;
+    width: 100% !important;
+}
+
+
+/* woraround for autocomplete */
+
+input[readonly] {
+    cursor: text;
+    background-color: #fff;
+}
+
+.homeimg {
+    width: 10vw !important;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.panel-flexfix {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
