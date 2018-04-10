@@ -24,12 +24,30 @@ $('#form').submit(function(e) {
         console.log('empty rows detected!');
         $('.input-group').each(function() {
             $(this).parent('div').addClass('has-error');
+            setTimeout(function() {
+                $('.form-group').removeClass('has-error');
+            }, 3000);
         });
+        //clear previous table if exists
+        $('.pre-scrollable').empty();
+        //attach error
+        $('<div>', {
+            text: 'Missing input,please try again.'
+        }).addClass('alert alert-danger row').insertAfter($('.row:first-child')).fadeTo(3000, 500).slideUp(500, function() {
+            $(this).slideUp(500);
+            setTimeout(function() {
+                $('.alert').remove();
+            }, 3000);
+        });
+        return false;
     } else {
         $('<div>', {
             text: 'table created! drag to move left right,mousewheel to move up and down.'
         }).addClass('alert alert-info row').insertAfter($('.row:first-child')).fadeTo(3000, 500).slideUp(500, function() {
             $(this).slideUp(500);
+            setTimeout(function() {
+                $('.alert').remove();
+            }, 3000);
         });
         console.log('rows: ' + rows + ' columns: ' + cols);
         $.each(rowArray, function(k, v) {
@@ -83,7 +101,7 @@ $('#form').submit(function(e) {
                         }
                         $(this).html(thRowArray);
                     }
-                })),
+                }).addClass('active')),
             //create tbody in table
             $('<tbody>', {
                 id: 'resultTbody',
@@ -119,7 +137,7 @@ $('#form').submit(function(e) {
                     $(this).html(trArray);
                 }
             }),
-        ).addClass('table table-striped table-bordered')
+        ).addClass('table table-striped table-bordered table-hover')
     );
 });
 
