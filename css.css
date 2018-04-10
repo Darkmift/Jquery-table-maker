@@ -33,21 +33,12 @@ body {
     width: 100% !important;
 }
 
+.pre-scrollable {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
 
-/* woraround for autocomplete */
-
-
-/* 
-.panel-flexfix {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+.alert {
+    width: 45%;
+    margin-left: 27.5%;
+}
