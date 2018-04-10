@@ -103,7 +103,7 @@ $('#form').submit(function(e) {
                                 const tdRowArray = [];
                                 tdRowArray[0] = $('<th>', {
                                     scope: "col",
-                                    text: '#row:' + index,
+                                    text: '#row:' + (index + 1),
                                 });
                                 for (let index = 0; index < colArray.length; index++) {
                                     name = index + 1;
