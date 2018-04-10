@@ -36,18 +36,8 @@ body {
 
 /* woraround for autocomplete */
 
-input[readonly] {
-    cursor: text;
-    background-color: #fff;
-}
 
-.homeimg {
-    width: 10vw !important;
-    height: auto;
-    display: flex;
-    justify-content: center;
-}
-
+/* 
 .panel-flexfix {
     display: flex;
     width: 100%;
@@ -60,4 +50,4 @@ input[readonly] {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */

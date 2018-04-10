@@ -1,6 +1,12 @@
 console.log('js online');
 
 // $('#form', {
+//     submit: function(e) { // not onsubmit, jquery uses JS event names: click, submit, blur etc
+//         e.preventDefault();
+//     },
+// })
+
+// $('#form', {
 //     onSubmit: function(e) {
 //         e.preventDefault();
 //         console.log('YO it workz');
@@ -22,7 +28,7 @@ $('#form').submit(function(e) {
     } else {
         $('<div>', {
             text: 'table created! drag to move left right,mousewheel to move up and down.'
-        }).addClass('alert alert-info').appendTo($('.row:first-child')).fadeTo(3000, 500).slideUp(500, function() {
+        }).addClass('alert alert-info row').insertAfter($('.row:first-child')).fadeTo(3000, 500).slideUp(500, function() {
             $(this).slideUp(500);
         });
         console.log('rows: ' + rows + ' columns: ' + cols);
@@ -88,9 +94,26 @@ $('#form').submit(function(e) {
                     for (let index = 0; index < rowArray.length; index++) {
                         name = index + 1;
                         trArray[index] = $('<tr>', {
+                            id: index,
                             key: name,
                             value: name,
-                            html: tdstring(colArray, index),
+                            // html: tdstring(colArray, index),
+                            //html: tdrow(colArray)
+                            html: function() {
+                                const tdRowArray = [];
+                                tdRowArray[0] = $('<th>', {
+                                    scope: "col",
+                                    text: '#row:' + index,
+                                });
+                                for (let index = 0; index < colArray.length; index++) {
+                                    name = index + 1;
+                                    tdRowArray.push($('<td>', {
+                                        value: name,
+                                        text: name,
+                                    }));
+                                }
+                                return tdRowArray;
+                            }
                         });
                     }
                     $(this).html(trArray);
@@ -100,13 +123,61 @@ $('#form').submit(function(e) {
     );
 });
 
-//make all the td
-function tdstring(colArray, index) {
-    let tdstring = '<th scope="row">' + (index + 1) + '</th>';
-    for (let index = 0; index < colArray.length; index++) {
-        console.log('creating td in tr...');
-        let name = index + 1;
-        tdstring += "<td id=" + name + " value=" + name + ">" + name + "</td>";
-    }
-    return tdstring;
-}
+
+
+
+// function tdrow(colArray) {
+//     const tdRowArray = [];
+//     tdRowArray[0] = $('<th>', {
+//         scope: "col",
+//         text: '#',
+//     });
+//     for (let index = 0; index < colArray.length; index++) {
+//         name = index + 1;
+//         tdRowArray.push($('<td>', {
+//             value: name,
+//             text: name,
+//         }));
+//     }
+//     return tdRowArray;
+// }
+
+
+
+
+
+
+// var content = [$('<p>...</p>'), $('<p>...</p>')];
+
+// var container = $('<div/>');
+
+// $.each(content, function(i, val) {
+//     container.append(val);
+// });
+
+// alert(container.html());
+
+// function trArray() {
+//     console.log('creating tr in tbody...');
+//     const trArray = [];
+//     for (let index = 0; index < rowArray.length; index++) {
+//         name = index + 1;
+//         trArray[index] = $('<tr>', {
+//             key: name,
+//             value: name,
+//             html: tdstring(colArray, index),
+//         });
+//     }
+//     $(this).html(trArray);
+// }
+
+// //make all the td
+// function tdstring(colArray, index) {
+//     let tdstring = '<th scope="row">' + (index + 1) + '</th>';
+//     for (let index = 0; index < colArray.length; index++) {
+//         console.log('creating td in tr...');
+//         let name = index + 1;
+//         tdstring += "<td id=" + name + " value=" + name + ">" + name + "</td>";
+//     }
+//     return tdstring;
+// }
